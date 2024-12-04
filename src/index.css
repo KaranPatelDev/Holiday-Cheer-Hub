@@ -1,0 +1,105 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes snowfall {
+  0% {
+    transform: translateY(-10vh) translateX(0);
+  }
+  100% {
+    transform: translateY(100vh) translateX(20px);
+  }
+}
+
+.snowflake {
+  @apply absolute text-white text-2xl pointer-events-none;
+  animation: snowfall linear infinite;
+}
+
+.scene {
+  @apply absolute inset-0 bg-center bg-cover rounded-full transition-opacity duration-500;
+}
+
+.scene.winter-village {
+  background-image: url('https://images.unsplash.com/photo-1544699377-6eb21b2e0794?auto=format&fit=crop&w=300&q=80');
+}
+
+.scene.santa-workshop {
+  background-image: url('https://images.unsplash.com/photo-1543589077-47d81606c1bf?auto=format&fit=crop&w=300&q=80');
+}
+
+.scene.ice-castle {
+  background-image: url('https://images.unsplash.com/photo-1551582045-6ec9c11d8697?auto=format&fit=crop&w=300&q=80');
+}
+
+.animate-fall {
+  animation: snowfall 3s linear infinite;
+} */
+
+
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes snowfall {
+  0% {
+    transform: translateY(-10vh) translateX(0);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(110vh) translateX(20px);
+    opacity: 0.3;
+  }
+}
+
+.snowflake {
+  @apply absolute text-white pointer-events-none;
+  font-size: calc(0.5rem + 1vw); /* Varying sizes for depth */
+  opacity: 0.5;
+  animation: snowfall linear infinite;
+  will-change: transform, opacity;
+}
+
+.snowflake:nth-child(odd) {
+  animation-duration: 5s;
+  animation-delay: calc(-5s * var(--i));
+}
+
+.snowflake:nth-child(even) {
+  animation-duration: 8s;
+  animation-delay: calc(-8s * var(--i));
+}
+
+.snowflake::after {
+  content: '❄';
+  position: relative;
+}
+
+.scene {
+  @apply absolute inset-0 bg-center bg-cover rounded-full transition-opacity duration-500;
+  overflow: hidden;
+}
+
+.scene.winter-village {
+  background-image: url('https://images.unsplash.com/photo-1544699377-6eb21b2e0794?auto=format&fit=crop&w=300&q=80');
+}
+
+.scene.santa-workshop {
+  background-image: url('https://images.unsplash.com/photo-1543589077-47d81606c1bf?auto=format&fit=crop&w=300&q=80');
+}
+
+.scene.ice-castle {
+  background-image: url('https://images.unsplash.com/photo-1551582045-6ec9c11d8697?auto=format&fit=crop&w=300&q=80');
+}
+
+.animate-fall {
+  animation: snowfall linear infinite;
+}
+
+/* Enhanced Snowfall */
+.snow-container {
+  @apply absolute inset-0 overflow-hidden pointer-events-none;
+}
